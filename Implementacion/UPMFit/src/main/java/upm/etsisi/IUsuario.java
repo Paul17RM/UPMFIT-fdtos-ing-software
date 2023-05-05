@@ -12,8 +12,6 @@ public interface IUsuario {
 
     String getNombreUsuario();
 
-    void logOut();
-
     void setContrasenia(String contrasenia);
 
     void setCorreoElectronico(String correo);
