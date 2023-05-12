@@ -11,6 +11,7 @@ public class ControladorCursoDeportivo {
     private static final ControladorUsuario controladorUsuario = ControladorUsuario.getInstance();
     private static final ControladorCursoDeportivo controladorCursoDeportivo = new ControladorCursoDeportivo();
     private static final ControladorInscripciones controladorInscripciones = ControladorInscripciones.getInstance();
+    private static final ControladorSalas controladorSalas = ControladorSalas.getInstance();
 
 
     public CursoDeportivo getCursoDeportivo(String nombre) {
@@ -21,22 +22,15 @@ public class ControladorCursoDeportivo {
 
     }
 
-    public void darDeAltaCurso(HashMap<String, String> datosCurso) {
-        List<SesionDeportivaDeCurso> list = new ArrayList<>();
-        for (int i = 1; i < datosCurso.size(); i++) {
-            list.add(new SesionDeportivaDeCurso(
-                    TActividad.values()[Integer.parseInt(datosCurso.get("actividad " + i)) - 1]
-                    , Integer.parseInt(datosCurso.get("aforo " + i))
-                    , datosCurso.get("fechaDeInicio " + i), datosCurso.get("fechaDeFin " + i)));
-        }
-        this.listaDeCursos.add(new CursoDeportivo(datosCurso.get("nombre"), list));
+    private void darDeAltaCurso(String datosCurso) {
+        List<SesionDeportivaDeCurso> listaSesiones = new ArrayList<>();
+        listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Natacion, 52, "02/06/2023 10:00", "02/06/2023 19:00",new SalaDeporte(45,60,369)));
+        listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Baile, 70, "07/06/2023 08:00", "07/06/2023 14:00",new SalaDeporte(60,100,420)));
+        this.listaDeCursos.add(new CursoDeportivo(datosCurso, listaSesiones));
     }
 
     public void darDeAltaCurso() {
-        HashMap<String, String> datosCurso;
-        datosCurso = vistaCurso.mostrarFormularioRegistroCurso();
-        //se comprueban los datos
-        darDeAltaCurso(datosCurso);
+        darDeAltaCurso(vistaCurso.mostrarFormularioRegistroCurso());
     }
 
     public static ControladorCursoDeportivo getInstance() {
@@ -56,9 +50,14 @@ public class ControladorCursoDeportivo {
         vistaCurso.renderShowListaCursos(listaDeCursos);
     }
 
-    public void mostrarDetallesCurso(String nombre) {
-        vistaCurso.renderShowCurso(findCurso(nombre));
-        controladorUsuario.showListaUsuarios(controladorInscripciones.getListaClientesCurso(nombre));
+    public void mostrarDetallesCurso() {
+        if (listaDeCursos.isEmpty()){
+            vistaCurso.noHayCursos();
+            return;
+        }
+        CursoDeportivo cursoDeportivo=vistaCurso.seleccionarCurso(listaDeCursos);
+        vistaCurso.renderShowCurso(cursoDeportivo);
+        controladorUsuario.showListaUsuarios(controladorInscripciones.getListaClientesCurso(cursoDeportivo.getNombre()));
     }
 
     public List<CursoDeportivo> getListaDeCursos() {
@@ -68,5 +67,14 @@ public class ControladorCursoDeportivo {
 
     public CursoDeportivo getCursoAInscribir() {
         return vistaCurso.seleccionarCurso(listaDeCursos);
+    }
+
+    public void asociarSesionesYSalas(List<SesionDeportiva> sesionesDeportivas, List<SalaDeporte> salasDeporte) {
+        for (int i = 0; i < sesionesDeportivas.size(); i++)
+            sesionesDeportivas.get(i).setSala(salasDeporte.get(i));
+    }
+
+    private void asociarSesionYSala(SesionDeportiva sesionDeportiva, SalaDeporte salaDeporte) {
+        sesionDeportiva.setSala(salaDeporte);
     }
 }

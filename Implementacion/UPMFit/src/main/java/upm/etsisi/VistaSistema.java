@@ -1,5 +1,7 @@
 package upm.etsisi;
 
+import upm.menu.Console;
+
 import java.util.Scanner;
 
 
@@ -42,13 +44,14 @@ public class VistaSistema {
         int respuesta;
         boolean ok;
         do {
-            System.out.println("Opción? [1-" + tamanio + "]: ");
-            respuesta = sc.nextInt() - 1;
+            System.out.print("Opción? [1-" + tamanio + "]: ");
+            respuesta = (sc.nextInt()) - 1;
             ok = 0 <= respuesta && respuesta < tamanio;
             if (!ok) {
                 System.out.println("opcion no valida");
             }
         } while (!ok);
+        sc.close();
         return respuesta;
     }
 

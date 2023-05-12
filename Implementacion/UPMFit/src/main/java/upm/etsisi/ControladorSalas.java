@@ -34,4 +34,8 @@ public class ControladorSalas {
     public void mostrarSala(int id) {
         vistaSalas.renderShowSala(getSalaDeporte(id));
     }
+
+    public List<SalaDeporte> getSalasDisponibles() {// hay que hacer lo de comprobar que este disponible de verda
+        return listaSalas;
+    }
 }

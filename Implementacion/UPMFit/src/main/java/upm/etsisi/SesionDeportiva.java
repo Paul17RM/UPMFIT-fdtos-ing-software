@@ -7,14 +7,14 @@ public abstract class SesionDeportiva {
     private String fechaFin;
     private String fechaInicio;
     private SalaDeporte sala; // esto antes era una lista, hay que cambiar en el enterprise que esta como una agregacion
-
     private int id;
 
-    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio) {
+    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio,SalaDeporte sala) {
         this.actividad = actividad;
         this.aforo = aforo;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
+        this.sala=sala;
     }
 
     public TActividad getActividad() {

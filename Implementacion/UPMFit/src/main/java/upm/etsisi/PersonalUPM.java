@@ -8,8 +8,8 @@ public class PersonalUPM extends Cliente {
     private int antiguedad;
     private TPersonal rol;
 
-    public PersonalUPM(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena, String DNI, int edad, Date fechaBaja, float peso, String sexo, String tarjetaCredito, int antiguedad, TPersonal rol) {
-        super(nombreUsuario, nombreCompleto, correoElectronico, contrasena, DNI, edad, fechaBaja, peso, sexo, tarjetaCredito);
+    public PersonalUPM(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena, String DNI, int edad, float peso, String sexo, String tarjetaCredito, int antiguedad, TPersonal rol) {
+        super(nombreUsuario, nombreCompleto, correoElectronico, contrasena, DNI, edad, peso, sexo, tarjetaCredito);
         this.antiguedad = antiguedad;
         this.rol = rol;
     }

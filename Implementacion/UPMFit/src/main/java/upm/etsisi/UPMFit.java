@@ -1,6 +1,6 @@
 package upm.etsisi;
 
-import upm.menu.MainUPMFitMenu;
+import upm.menu.MainUPMFitIMenu;
 
 public class UPMFit {
 
@@ -17,7 +17,7 @@ public class UPMFit {
     public static void main(String[] args) {
         UPMFit upmFit = new UPMFit();
         upmFit.initialize();
-        new MainUPMFitMenu("Que quieres hacer?").interact();
+        new MainUPMFitIMenu("Que quieres hacer?").interact();
     }
 
     public void initialize() {

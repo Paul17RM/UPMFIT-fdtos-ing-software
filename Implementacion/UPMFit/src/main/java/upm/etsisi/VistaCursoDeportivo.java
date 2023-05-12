@@ -41,50 +41,11 @@ public class VistaCursoDeportivo {
         }
     }
 
-    public HashMap<String, String> mostrarFormularioRegistroCurso() {
-        HashMap<String, String> datosCurso = new HashMap<>();
+    public String mostrarFormularioRegistroCurso() {
         Scanner sc = new Scanner(System.in);
-        boolean ok = false;
-        while (!ok) {
-
-            System.out.println("Introduce un nombre para el curso");
-            datosCurso.put("nombre", sc.nextLine());
-
-            int i = 0;
-            boolean out = false;
-            while (i < 2 && !out) {
-                System.out.print("Introduce la fecha de inicio (DD/MM/YYYY): ");
-                datosCurso.put("fechaDeInicio" + i, sc.nextLine());
-
-                System.out.print("Introduce la fecha de fin (DD/MM/YYYY): ");
-                datosCurso.put("fechaDeFin" + i, sc.nextLine());
-
-                System.out.print("Introduce el aforo: ");
-                datosCurso.put("aforo" + i, sc.nextLine());
-
-                System.out.print("Elija la actividad la actividad: ");
-                for (int j = 0; j < TActividad.values().length; j++) {
-                    System.out.println((j + 1) + TActividad.values()[j].name());
-                }
-                datosCurso.put("actividad" + i, String.valueOf(pedirNumero(TActividad.values().length)));
-
-
-                i++;
-                System.out.println("Ha terminado de introducir las sesiones de este curso?(recuerde que debe introducir como minimo 2) ");
-                out = sc.nextLine().equalsIgnoreCase("y");
-            }
-
-
-            System.out.println("Datos del introducidos:");
-            for (String key : datosCurso.keySet()) {
-                System.out.println(key + ": " + datosCurso.get(key));
-            }
-            System.out.println("Son correctos los datos introducidos?");
-            ok = sc.nextLine().equalsIgnoreCase("y");
-
-        }
+        System.out.println("Introduce un nombre para el curso");
+        String datosCurso = sc.nextLine();
         sc.close();
-
         return datosCurso;
     }
 
@@ -94,7 +55,11 @@ public class VistaCursoDeportivo {
         return listaDeCursos.get(pedirNumero(listaDeCursos.size()));
     }
 
-    public static int pedirNumero(int max) {
+    public void noHayCursos() {
+        System.out.println("actualmente no hay cursos disponibles");
+    }
+
+    public int pedirNumero(int max) {
         Scanner scanner = new Scanner(System.in);
         int opcion;
         boolean ok;

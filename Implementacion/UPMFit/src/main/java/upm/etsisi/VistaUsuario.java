@@ -70,12 +70,18 @@ public class VistaUsuario {
         System.out.print("Introduce la tarjeta de crédito: ");
         datosUsuario.put("tarjetaCredito", sc.nextLine());
 
-        System.out.print("Introduce la matrícula: ");
-        datosUsuario.put("matricula", sc.nextLine());
-
-        System.out.print("Introduce tu antiguedad en la UPM si procede: ");
-        datosUsuario.put("antiguedad", sc.nextLine());
-
         return datosUsuario;
+    }
+
+    public String mostrarFormularioPersonal(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce tu antiguedad en la UPM si procede: ");
+        return sc.nextLine();
+    }
+
+    public String mostrarFormularioAlumno(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce la matrícula: ");
+        return sc.nextLine();
     }
 }

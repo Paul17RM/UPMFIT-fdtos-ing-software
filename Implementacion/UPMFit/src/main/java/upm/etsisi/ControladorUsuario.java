@@ -1,5 +1,7 @@
 package upm.etsisi;
 
+import servidor.ObtencionDeRol;
+import servidor.UPMUsers;
 import utilidades.Cifrado;
 
 import java.io.BufferedReader;
@@ -32,7 +34,8 @@ public class ControladorUsuario {
                     Float.parseFloat(datosUsuario.get("peso")),
                     datosUsuario.get("sexo"),
                     datosUsuario.get("tarjetaCredito"),
-                    Integer.parseInt(datosUsuario.get("antiguedad"))));
+                    Integer.parseInt(datosUsuario.get("antiguedad")),
+                    ObtencionDeRol.get_UPM_AccountRol(datosUsuario.get("correoElectronico")).equals(UPMUsers.PDI) ? TPersonal.PDI : TPersonal.PAS));
         } else if (!datosUsuario.get("matricula").equals("")) {
             this.listaUsuarios.add(new Estudiante(
                     datosUsuario.get("nombreUsuario"),
@@ -97,7 +100,7 @@ public class ControladorUsuario {
                 }
             }
         } catch (IOException e) {
-            //de momento no hacemos nada, no le vamos a sacar al usuario un problema nuestro
+            System.out.println("El nombre de usuario esta pendiente de verificacion");
         } finally {
             if (reader != null) {
                 try {
@@ -134,14 +137,22 @@ public class ControladorUsuario {
     }
 
     public void crearUsuario() {
-        HashMap<String, String> datosUsuario = new HashMap<>();
-        datosUsuario.put("contrasena", "1234");
-        while (!constrasenaValida(datosUsuario.get("contrasena"))
-                || !nombreValido(datosUsuario.get("nombreUsuario"))
-                || (Integer.parseInt(datosUsuario.get("edad")) < 0
-                || Float.parseFloat(datosUsuario.get("peso")) < 0)) {
+        HashMap<String, String> datosUsuario;
+        do {
             datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
+        } while (!constrasenaValida(datosUsuario.get("contrasena"))
+                || !nombreValido(datosUsuario.get("nombreUsuario"))
+                || Integer.parseInt(datosUsuario.get("edad")) < 0
+                || Float.parseFloat(datosUsuario.get("peso")) < 0);
+
+        UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
+        if (rolUsuario.equals(UPMUsers.ALUMNO)) {
+            datosUsuario.put("matricula", vistaUsuario.mostrarFormularioAlumno());
+        } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
+            datosUsuario.put("antiguedad", vistaUsuario.mostrarFormularioPersonal());
         }
         crearUsuario(datosUsuario);
     }
+
+
 }
