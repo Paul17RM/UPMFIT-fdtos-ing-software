@@ -1,5 +1,6 @@
 package upm.etsisi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CursoDeportivo implements ICursoDeportivo {
@@ -11,6 +12,7 @@ public class CursoDeportivo implements ICursoDeportivo {
     public CursoDeportivo(String nombre, List<SesionDeportivaDeCurso> sesionesCurso) {
         this.nombre = nombre;
         this.sesionesCurso = sesionesCurso;
+        this.inscripcionesCurso=new ArrayList<>();
     }
 
     @Override

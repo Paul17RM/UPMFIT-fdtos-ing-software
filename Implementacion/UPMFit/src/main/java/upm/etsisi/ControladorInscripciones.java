@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ControladorInscripciones {
 
-    private List<InscripcionCurso> listaInscripciones;
+    private final List<InscripcionCurso> listaInscripciones= new ArrayList<>();
     private static final ControladorInscripciones controladorInscripciones = new ControladorInscripciones();
 
     private ControladorInscripciones() {
@@ -31,7 +31,6 @@ public class ControladorInscripciones {
     public List<CursoDeportivo> getListaCursosCliente(String email) {
         List<CursoDeportivo> listaCursos = new ArrayList<>();
         InscripcionCurso inscripcionCurso;
-
         for (InscripcionCurso listaInscripcione : this.listaInscripciones) {
             inscripcionCurso = listaInscripcione;
             if (inscripcionCurso.getCliente().getCorreoElectronico().equals(email)) {

@@ -9,7 +9,6 @@ public class VistaSalas {
     public static VistaSalas getInstance(){ return vistaSalas;}
 
     private VistaSalas(){
-
     }
 
     public void renderShowSala(SalaDeporte salaDeporte){

@@ -1,7 +1,6 @@
 package upm.etsisi;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ControladorCursoDeportivo {
@@ -19,7 +18,6 @@ public class ControladorCursoDeportivo {
     }
 
     private ControladorCursoDeportivo() {
-
     }
 
     private void darDeAltaCurso(String datosCurso) {
@@ -57,7 +55,7 @@ public class ControladorCursoDeportivo {
         }
         CursoDeportivo cursoDeportivo=vistaCurso.seleccionarCurso(listaDeCursos);
         vistaCurso.renderShowCurso(cursoDeportivo);
-        controladorUsuario.showListaUsuarios(controladorInscripciones.getListaClientesCurso(cursoDeportivo.getNombre()));
+        //controladorUsuario.showListaUsuarios(controladorInscripciones.getListaClientesCurso(cursoDeportivo.getNombre()));
     }
 
     public List<CursoDeportivo> getListaDeCursos() {

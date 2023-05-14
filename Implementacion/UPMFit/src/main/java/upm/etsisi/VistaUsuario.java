@@ -11,7 +11,6 @@ public class VistaUsuario {
     }
 
     private VistaUsuario() {
-
     }
 
     public void mostrarUsuario(Usuario usuario) {
@@ -25,7 +24,6 @@ public class VistaUsuario {
     }
 
     public void renderShowListaUsuarios(List<Usuario> listaClientesCurso) {
-
         for (Usuario usuario : listaClientesCurso) {
             LinkedHashMap<String, String> datosUsuario = usuario.getInformacionBasica();
             System.out.println("Datos del usuario " + datosUsuario.get("Nombre de usuario: "));
@@ -73,13 +71,13 @@ public class VistaUsuario {
         return datosUsuario;
     }
 
-    public String mostrarFormularioPersonal(){
+    public String mostrarFormularioPersonal() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce tu antiguedad en la UPM si procede: ");
         return sc.nextLine();
     }
 
-    public String mostrarFormularioAlumno(){
+    public String mostrarFormularioAlumno() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce la matrícula: ");
         return sc.nextLine();

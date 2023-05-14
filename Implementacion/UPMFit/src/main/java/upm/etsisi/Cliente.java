@@ -35,10 +35,6 @@ public class Cliente extends Usuario {
         this.tarjetaCredito = tarjetaCredito;
     }
 
-    public void finalize() throws Throwable {
-        super.finalize();
-    }
-
     @Override
     public LinkedHashMap<String, String> getInformacion() {
         LinkedHashMap<String, String> datosCliente;
@@ -50,10 +46,6 @@ public class Cliente extends Usuario {
         datosCliente.put("Decuento aplicado: ", String.valueOf(this.descuentoFijo));
         datosCliente.put("Fecha de baja: ", this.fechaBaja.toString());
         return datosCliente;
-    }
-
-    public void destroy() {
-
     }
 
     public int getDescuentoFijo() {

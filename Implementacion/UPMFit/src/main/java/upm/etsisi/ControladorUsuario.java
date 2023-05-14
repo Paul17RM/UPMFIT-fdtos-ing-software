@@ -23,7 +23,7 @@ public class ControladorUsuario {
     }
 
     private void crearUsuario(HashMap<String, String> datosUsuario) {//se puede hacer el factory
-        if (!datosUsuario.get("antiguedad").equals("")) {
+        if (datosUsuario.containsKey("antiguedad")) {
             this.listaUsuarios.add(new PersonalUPM(
                     datosUsuario.get("nombreUsuario"),
                     datosUsuario.get("nombreCompleto"),
@@ -59,7 +59,6 @@ public class ControladorUsuario {
                     Float.parseFloat(datosUsuario.get("peso")),
                     datosUsuario.get("sexo"),
                     datosUsuario.get("tarjetaCredito")));
-
         }
     }
 
@@ -132,12 +131,12 @@ public class ControladorUsuario {
                 hasSymbols = true;
             }
         }
-
         return hasUpperCase && hasLowercase && hasNumbers && hasSymbols && 8 <= password.length() && password.length() <= 12;
     }
 
     public void crearUsuario() {
         HashMap<String, String> datosUsuario;
+
         do {
             datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
         } while (!constrasenaValida(datosUsuario.get("contrasena"))
@@ -153,6 +152,5 @@ public class ControladorUsuario {
         }
         crearUsuario(datosUsuario);
     }
-
 
 }

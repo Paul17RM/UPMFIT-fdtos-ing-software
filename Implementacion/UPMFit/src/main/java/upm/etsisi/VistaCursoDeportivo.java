@@ -1,6 +1,5 @@
 package upm.etsisi;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,15 +15,14 @@ public class VistaCursoDeportivo {
         return vistaCursoDeportivo;
     }
 
-
     public void renderShowCurso(CursoDeportivo curso) {
         List<SesionDeportivaDeCurso> listaSesiones = curso.getSesionesCurso();
         System.out.println("Las sesiones del curso" + curso.getNombre() + "son: ");
         for (SesionDeportivaDeCurso sesionDeportivaDeCurso : listaSesiones) {
             System.out.println("Sesion de " + sesionDeportivaDeCurso.getActividad().name());
-            System.out.println("Comienza el" + sesionDeportivaDeCurso.getFechaInicio());
+            System.out.println("Comienza el " + sesionDeportivaDeCurso.getFechaInicio());
             System.out.println("Acaba el " + sesionDeportivaDeCurso.getFechaFin());
-            System.out.println("El numero de plazas es de  " + (sesionDeportivaDeCurso.getAforo() - curso.getInscripcionCursos().size()));
+            //System.out.println("El numero de plazas es de  " + (sesionDeportivaDeCurso.getAforo() - curso.getInscripcionCursos().size()));
             System.out.println("Se imparte en las salas: ");
             System.out.println(sesionDeportivaDeCurso.getSala().getId());
             System.out.println("Con tamaño: " + sesionDeportivaDeCurso.getSala().getTamanio() + " m²");
@@ -65,8 +63,8 @@ public class VistaCursoDeportivo {
         boolean ok;
         do {
             System.out.print("Elige una opcion: ");
-            opcion = Integer.parseInt(scanner.nextLine());
-            ok = 1 < opcion && opcion < max;
+            opcion = Integer.parseInt(scanner.next())-1;
+            ok = 0 <= opcion && opcion < max;
             if (!ok) {
                 System.out.println("Error: Ingresa un número válido entre 1 y " + max);
             }
