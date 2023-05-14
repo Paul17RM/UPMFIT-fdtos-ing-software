@@ -67,7 +67,6 @@ public class VistaCursoDeportivo {
                 System.out.println("Error: Ingresa un número válido entre 1 y " + max);
             }
         } while (!ok);
-        scanner.close();
         return opcion;
     }
 }

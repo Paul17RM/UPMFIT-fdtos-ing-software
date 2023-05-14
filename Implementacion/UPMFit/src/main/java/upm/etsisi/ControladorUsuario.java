@@ -36,7 +36,7 @@ public class ControladorUsuario {
                     datosUsuario.get("tarjetaCredito"),
                     Integer.parseInt(datosUsuario.get("antiguedad")),
                     ObtencionDeRol.get_UPM_AccountRol(datosUsuario.get("correoElectronico")).equals(UPMUsers.PDI) ? TPersonal.PDI : TPersonal.PAS));
-        } else if (!datosUsuario.get("matricula").equals("")) {
+        } else if (datosUsuario.containsKey("matricula")) {
             this.listaUsuarios.add(new Estudiante(
                     datosUsuario.get("nombreUsuario"),
                     datosUsuario.get("nombreCompleto"),
