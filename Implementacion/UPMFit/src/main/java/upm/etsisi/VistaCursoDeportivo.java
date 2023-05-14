@@ -42,9 +42,7 @@ public class VistaCursoDeportivo {
     public String mostrarFormularioRegistroCurso() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce un nombre para el curso");
-        String datosCurso = sc.nextLine();
-        sc.close();
-        return datosCurso;
+        return sc.nextLine();
     }
 
     public CursoDeportivo seleccionarCurso(List<CursoDeportivo> listaDeCursos) {
