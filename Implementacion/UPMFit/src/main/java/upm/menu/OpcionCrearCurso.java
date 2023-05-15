@@ -2,7 +2,7 @@ package upm.menu;
 
 import upm.etsisi.ControladorCursoDeportivo;
 
-public class OpcionCrearCurso extends  Option{
+public class OpcionCrearCurso extends Option {
     public OpcionCrearCurso(String title) {
         super(title);
     }

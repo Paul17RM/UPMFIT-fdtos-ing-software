@@ -1,6 +1,5 @@
 package upm.etsisi;
 
-import java.sql.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -44,7 +43,6 @@ public class Cliente extends Usuario {
         datosCliente.put("Peso: ", String.valueOf(this.peso));
         datosCliente.put("Numero Tarjeta de credito: ", this.tarjetaCredito);
         datosCliente.put("Decuento aplicado: ", String.valueOf(this.descuentoFijo));
-        datosCliente.put("Fecha de baja: ", this.fechaBaja.toString());
         return datosCliente;
     }
 

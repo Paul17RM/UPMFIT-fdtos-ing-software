@@ -38,48 +38,48 @@ public class VistaUsuario {
 
     public HashMap<String, String> mostrarFormularioRegistro() {
         HashMap<String, String> datosUsuario = new HashMap<>();
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Introduce un nombre de usuario (debe tener entre 3 y 10 caracteres):");
-        datosUsuario.put("nombreUsuario", sc.nextLine());
+        datosUsuario.put("nombreUsuario", scanner.nextLine().trim());
 
         System.out.print("Introduce el nombre y apellidos: ");
-        datosUsuario.put("nombreCompleto", sc.nextLine());
+        datosUsuario.put("nombreCompleto", scanner.nextLine().trim());
 
         System.out.print("Introduce el correo electrónico: ");
-        datosUsuario.put("correoElectronico", sc.nextLine());
+        datosUsuario.put("correoElectronico", scanner.nextLine().trim());
 
         System.out.println("Introduce una contraseña válida (debe tener al menos una letra mayúscula," +
                 " una letra minúscula, un número, un símbolo y tener una longitud entre 8 y 12 caracteres):");
-        datosUsuario.put("contrasena", sc.nextLine());
+        datosUsuario.put("contrasena", scanner.nextLine().trim());
 
         System.out.print("Introduce el DNI: ");
-        datosUsuario.put("DNI", sc.nextLine());
+        datosUsuario.put("DNI", scanner.nextLine().trim());
 
         System.out.print("Introduce la edad: ");
-        datosUsuario.put("edad", sc.nextLine());
+        datosUsuario.put("edad", scanner.nextLine().trim());
 
         System.out.print("Introduce el peso: ");
-        datosUsuario.put("peso", sc.nextLine());
+        datosUsuario.put("peso", scanner.nextLine().trim());
 
         System.out.print("Introduce el sexo: ");
-        datosUsuario.put("sexo", sc.nextLine());
+        datosUsuario.put("sexo", scanner.nextLine().trim());
 
         System.out.print("Introduce la tarjeta de crédito: ");
-        datosUsuario.put("tarjetaCredito", sc.nextLine());
+        datosUsuario.put("tarjetaCredito", scanner.nextLine().trim());
 
         return datosUsuario;
     }
 
     public String mostrarFormularioPersonal() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce tu antiguedad en la UPM si procede: ");
-        return sc.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce tu antiguedad en la UPM: ");
+        return scanner.nextLine().trim();
     }
 
     public String mostrarFormularioAlumno() {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce la matrícula: ");
-        return sc.nextLine();
+        return scanner.nextLine().trim();
     }
 }

@@ -31,19 +31,4 @@ public class PersonalUPM extends Cliente {
         return 0;
     }
 
-    public int getAntiguedad() {
-        return this.antiguedad;
-    }
-
-    public void setAntiguedad(int antiguedad) {
-        this.antiguedad = antiguedad;
-    }
-
-    public TPersonal getRol() {
-        return this.rol;
-    }
-
-    public void setRol(TPersonal rol) {
-        this.rol = rol;
-    }
 }

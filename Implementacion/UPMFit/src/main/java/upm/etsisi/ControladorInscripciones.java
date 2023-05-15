@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ControladorInscripciones {
 
-    private final List<InscripcionCurso> listaInscripciones= new ArrayList<>();
+    private final List<InscripcionCurso> listaInscripciones = new ArrayList<>();
     private static final ControladorInscripciones controladorInscripciones = new ControladorInscripciones();
 
     private ControladorInscripciones() {

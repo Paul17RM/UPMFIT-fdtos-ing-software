@@ -27,6 +27,7 @@ public class VistaCursoDeportivo {
             System.out.println(sesionDeportivaDeCurso.getSala().getId());
             System.out.println("Con tamaño: " + sesionDeportivaDeCurso.getSala().getTamanio() + " m²");
             System.out.println("Con aforo: " + sesionDeportivaDeCurso.getSala().getAforo());
+            System.out.println("Por el profesor " + sesionDeportivaDeCurso.getMonitor().getNombreCompleto() + " Alias " + sesionDeportivaDeCurso.getMonitor().getNombreUsuario());
         }
         System.out.println("Usuarios inscritos al curso: ");
 
@@ -42,7 +43,7 @@ public class VistaCursoDeportivo {
     public String mostrarFormularioRegistroCurso() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce un nombre para el curso");
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public CursoDeportivo seleccionarCurso(List<CursoDeportivo> listaDeCursos) {
@@ -61,7 +62,7 @@ public class VistaCursoDeportivo {
         boolean ok;
         do {
             System.out.print("Elige una opcion: ");
-            opcion = Integer.parseInt(scanner.next())-1;
+            opcion = Integer.parseInt(scanner.next().trim()) - 1;
             ok = 0 <= opcion && opcion < max;
             if (!ok) {
                 System.out.println("Error: Ingresa un número válido entre 1 y " + max);

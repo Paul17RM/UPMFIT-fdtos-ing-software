@@ -17,12 +17,4 @@ public class Estudiante extends Cliente {
         datosEstudiante.put("Matricula: ", this.matricula);
         return datosEstudiante;
     }
-
-    public String getMatricula() {
-        return this.matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
 }

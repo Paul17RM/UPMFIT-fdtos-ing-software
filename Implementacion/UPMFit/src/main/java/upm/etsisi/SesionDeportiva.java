@@ -7,14 +7,23 @@ public abstract class SesionDeportiva {
     private String fechaFin;
     private String fechaInicio;
     private SalaDeporte sala; // esto antes era una lista, hay que cambiar en el enterprise que esta como una agregacion
-    private int id;
+    private Monitor monitor;
 
-    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio,SalaDeporte sala) {
+    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio, SalaDeporte sala) {
         this.actividad = actividad;
         this.aforo = aforo;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
-        this.sala=sala;
+        this.sala = sala;
+    }
+
+    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio, SalaDeporte sala, Monitor monitor) {
+        this.actividad = actividad;
+        this.aforo = aforo;
+        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio;
+        this.sala = sala;
+        this.monitor = monitor;
     }
 
     public TActividad getActividad() {
@@ -57,11 +66,11 @@ public abstract class SesionDeportiva {
         this.sala = cursosDeportivosSalas;
     }
 
-    public int getId() {
-        return id;
+    public Monitor getMonitor() {
+        return monitor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
     }
 }

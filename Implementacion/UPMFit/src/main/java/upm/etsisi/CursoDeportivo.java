@@ -12,7 +12,7 @@ public class CursoDeportivo implements ICursoDeportivo {
     public CursoDeportivo(String nombre, List<SesionDeportivaDeCurso> sesionesCurso) {
         this.nombre = nombre;
         this.sesionesCurso = sesionesCurso;
-        this.inscripcionesCurso=new ArrayList<>();
+        this.inscripcionesCurso = new ArrayList<>();
     }
 
     @Override

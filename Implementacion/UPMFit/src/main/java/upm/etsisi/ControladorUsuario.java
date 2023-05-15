@@ -87,6 +87,39 @@ public class ControladorUsuario {
         vistaUsuario.renderShowListaUsuarios(listaClientesCurso);
     }
 
+    public void crearUsuario() {
+        HashMap<String, String> datosUsuario;
+
+        do {
+            datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
+        } while (!constrasenaValida(datosUsuario.get("contrasena"))
+                || !nombreValido(datosUsuario.get("nombreUsuario"))
+                || Integer.parseInt(datosUsuario.get("edad")) < 0
+                || Float.parseFloat(datosUsuario.get("peso")) < 0
+                || !validarDNI(datosUsuario.get("DNI")));
+
+        UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
+        if (rolUsuario.equals(UPMUsers.ALUMNO)) {
+            datosUsuario.put("matricula", vistaUsuario.mostrarFormularioAlumno());
+        } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
+            datosUsuario.put("antiguedad", vistaUsuario.mostrarFormularioPersonal());
+        }
+        crearUsuario(datosUsuario);
+    }
+
+    private boolean validarDNI(String dni) {
+        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+        String dniRegex = "\\d{8}[A-HJ-NP-TV-Za-hj-np-tv-z]";
+
+        if (dni.matches(dniRegex)) {
+            char letraCalculada = letras.charAt(Integer.parseInt(dni.substring(0, 8)) % 23);
+            char letraDNI = Character.toUpperCase(dni.charAt(8));
+            return letraCalculada == letraDNI;
+        }
+
+        return false;
+    }
+
     private boolean nombreValido(String nombre) {
         File nameList = new File("filename.txt");
         BufferedReader reader = null;
@@ -132,25 +165,6 @@ public class ControladorUsuario {
             }
         }
         return hasUpperCase && hasLowercase && hasNumbers && hasSymbols && 8 <= password.length() && password.length() <= 12;
-    }
-
-    public void crearUsuario() {
-        HashMap<String, String> datosUsuario;
-
-        do {
-            datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
-        } while (!constrasenaValida(datosUsuario.get("contrasena"))
-                || !nombreValido(datosUsuario.get("nombreUsuario"))
-                || Integer.parseInt(datosUsuario.get("edad")) < 0
-                || Float.parseFloat(datosUsuario.get("peso")) < 0);
-
-        UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
-        if (rolUsuario.equals(UPMUsers.ALUMNO)) {
-            datosUsuario.put("matricula", vistaUsuario.mostrarFormularioAlumno());
-        } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
-            datosUsuario.put("antiguedad", vistaUsuario.mostrarFormularioPersonal());
-        }
-        crearUsuario(datosUsuario);
     }
 
 }
