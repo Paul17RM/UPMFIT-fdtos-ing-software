@@ -24,14 +24,14 @@ public class ControladorCursoDeportivo {
         List<SesionDeportivaDeCurso> listaSesiones = new ArrayList<>();
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Natacion,
                 52,
-                "02/06/2023 10:00",
                 "02/06/2023 19:00",
+                "02/06/2023 10:00",
                 new SalaDeporte(45, 60, 369),
                 new Monitor("Sportacus", "Jose Manuel", "josito@gmail.com", "2Gb&poicv", "3657854F", "ES12 1234 1234 12 1234567890")));
 
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Baile,
-                70, "07/06/2023 08:00",
-                "07/06/2023 14:00",
+                70, "07/06/2023 14:00",
+                "07/06/2023 08:00",
                 new SalaDeporte(60, 100, 420),
                 new Monitor("Mike", "Micheal J Fernandez", "elJordan69@gmail.com", "5Tb&jiji", "86418418F", "ES12 1234 1234 12 12378677890")));
         this.listaDeCursos.add(new CursoDeportivo(datosCurso, listaSesiones));

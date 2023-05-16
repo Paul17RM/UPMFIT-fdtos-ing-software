@@ -39,12 +39,17 @@ public class VistaSistema {
 
     public int opcionAEjecutar(int tamanio) {
         Scanner scanner = new Scanner(System.in);
-        int opcion;
-        boolean ok;
+        int opcion = 0;
+        boolean ok = false;
         do {
             System.out.print("Opción? [1-" + tamanio + "]: ");
-            opcion = Integer.parseInt(scanner.next().trim()) - 1;
-            ok = 0 <= opcion && opcion < tamanio;
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt() - 1;
+                ok = 0 <= opcion && opcion < tamanio;
+            } else {
+                scanner.nextLine();
+            }
+
             if (!ok) {
                 System.out.println("opcion no valida");
             }

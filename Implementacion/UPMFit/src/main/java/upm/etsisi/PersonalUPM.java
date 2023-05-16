@@ -1,6 +1,5 @@
 package upm.etsisi;
 
-import java.sql.Date;
 import java.util.LinkedHashMap;
 
 public class PersonalUPM extends Cliente {
