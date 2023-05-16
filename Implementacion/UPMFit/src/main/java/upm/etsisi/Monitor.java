@@ -10,7 +10,7 @@ public class Monitor extends Usuario {
     private List<Nomina> nominas;
 
     public Monitor(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena, String DNI, String numeroCuenta) {
-        super(nombreUsuario, nombreCompleto, correoElectronico, contrasena, DNI);
+        super(contrasena, correoElectronico, nombreCompleto, nombreUsuario, DNI);
         this.numeroCuenta = numeroCuenta;
     }
 
