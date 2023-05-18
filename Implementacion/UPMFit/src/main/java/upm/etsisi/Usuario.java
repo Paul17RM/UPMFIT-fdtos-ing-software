@@ -19,10 +19,6 @@ public abstract class Usuario implements IUsuario {
         this.DNI = DNI;
     }
 
-    public boolean validarEmail() {
-        return false;
-    }
-
     @Override
     public LinkedHashMap<String, String> getInformacionBasica() {
         LinkedHashMap<String, String> datosUsuario = new LinkedHashMap<>();
@@ -37,33 +33,8 @@ public abstract class Usuario implements IUsuario {
     public abstract LinkedHashMap<String, String> getInformacion();
 
     @Override
-    public String getContrasenia() {
-        return this.contrasenia;
-    }
-
-    @Override
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    @Override
-    public String getCorreoElectronico() {
-        return this.correoElectronico;
-    }
-
-    @Override
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    @Override
     public String getNombreCompleto() {
         return this.nombreCompleto;
-    }
-
-    @Override
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
     }
 
     @Override

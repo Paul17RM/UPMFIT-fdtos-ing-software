@@ -19,10 +19,9 @@ public class ControladorUsuario {
     private static final ControladorUsuario controladorUsuario = new ControladorUsuario();
 
     private ControladorUsuario() {
-
     }
 
-    private void crearUsuario(HashMap<String, String> datosUsuario) {//se puede hacer el factory
+    private void crearUsuario(HashMap<String, String> datosUsuario) {
         if (datosUsuario.containsKey("antiguedad")) {
             this.listaUsuarios.add(new PersonalUPM(
                     datosUsuario.get("nombreUsuario"),
@@ -83,8 +82,8 @@ public class ControladorUsuario {
         vistaUsuario.mostrarUsuario(findUser(email));
     }
 
-    public void showListaUsuarios(List<Usuario> listaClientesCurso) {
-        vistaUsuario.renderShowListaUsuarios(listaClientesCurso);
+    public void showListaUsuarios(List<IUsuario> listaClientesCurso) {
+        this.vistaUsuario.renderShowListaUsuarios(listaClientesCurso);
     }
 
     public void crearUsuario() {
@@ -92,19 +91,20 @@ public class ControladorUsuario {
 
         do {
             datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
-        } while (!constrasenaValida(datosUsuario.get("contrasena"))
-                || !nombreValido(datosUsuario.get("nombreUsuario"))
+        } while (!this.constrasenaValida(datosUsuario.get("contrasena"))
+                || !this.nombreValido(datosUsuario.get("nombreUsuario"))
                 || Integer.parseInt(datosUsuario.get("edad")) < 0
                 || Float.parseFloat(datosUsuario.get("peso")) < 0
                 || !validarDNI(datosUsuario.get("DNI")));
 
         UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
-        if (rolUsuario.equals(UPMUsers.ALUMNO)) {
-            datosUsuario.put("matricula", vistaUsuario.mostrarFormularioAlumno());
+        if (rolUsuario== null) {
+            crearUsuario(datosUsuario);
         } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
-            datosUsuario.put("antiguedad", vistaUsuario.mostrarFormularioPersonal());
+            datosUsuario.put("antiguedad", this.vistaUsuario.mostrarFormularioPersonal());
+        }else if (rolUsuario.equals(UPMUsers.ALUMNO)){
+            datosUsuario.put("matricula", this.vistaUsuario.mostrarFormularioAlumno());
         }
-        crearUsuario(datosUsuario);
     }
 
     private boolean validarDNI(String dni) {

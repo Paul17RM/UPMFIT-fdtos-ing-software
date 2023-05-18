@@ -62,8 +62,4 @@ public abstract class Menu {
         return false;
     }
 
-    protected void removeOptions() {
-        this.size = 0;
-    }
-
 }

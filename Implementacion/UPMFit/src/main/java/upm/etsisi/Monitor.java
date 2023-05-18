@@ -7,8 +7,6 @@ public class Monitor extends Usuario {
 
     private String numeroCuenta;
     private List<SesionDeportivaDeCurso> sesionesImpartidas;
-    private List<Nomina> nominas;
-
     public Monitor(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena, String DNI, String numeroCuenta) {
         super(contrasena, correoElectronico, nombreCompleto, nombreUsuario, DNI);
         this.numeroCuenta = numeroCuenta;

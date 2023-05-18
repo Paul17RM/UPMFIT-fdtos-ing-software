@@ -23,14 +23,14 @@ public class VistaCursoDeportivo {
             System.out.println("Sesion de " + sesionDeportivaDeCurso.getActividad().name());
             System.out.println("Comienza el " + sesionDeportivaDeCurso.getFechaInicio());
             System.out.println("Acaba el " + sesionDeportivaDeCurso.getFechaFin());
-            //System.out.println("El numero de plazas es de  " + (sesionDeportivaDeCurso.getAforo() - curso.getInscripcionCursos().size()));
+            System.out.println("El numero de plazas es de " + (sesionDeportivaDeCurso.getAforo() - curso.getInscripcionCursos().size()));
             System.out.println("Se imparte en las sala: "+sesionDeportivaDeCurso.getSala().getId());
             System.out.println("Con tamaño: " + sesionDeportivaDeCurso.getSala().getTamanio() + " m²");
             System.out.println("Con aforo: " + sesionDeportivaDeCurso.getSala().getAforo());
             System.out.println("Por el profesor " + sesionDeportivaDeCurso.getMonitor().getNombreCompleto() + " Alias " + sesionDeportivaDeCurso.getMonitor().getNombreUsuario());
             System.out.println();
         }
-        System.out.println("Usuarios inscritos al curso: ");
+        System.out.println("Usuarios inscritos al curso: \n");
 
     }
 
@@ -43,7 +43,7 @@ public class VistaCursoDeportivo {
 
     public String mostrarFormularioRegistroCurso() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce un nombre para el curso");
+        System.out.print("Introduce un nombre para el curso: ");
         return sc.nextLine().trim();
     }
 
@@ -54,7 +54,7 @@ public class VistaCursoDeportivo {
     }
 
     public void noHayCursos() {
-        System.out.println("actualmente no hay cursos disponibles");
+        System.out.println("Actualmente no hay cursos disponibles");
     }
 
     public int pedirNumero(int max) {

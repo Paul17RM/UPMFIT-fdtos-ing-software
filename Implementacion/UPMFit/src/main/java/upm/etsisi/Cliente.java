@@ -1,5 +1,6 @@
 package upm.etsisi;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -10,9 +11,8 @@ public class Cliente extends Usuario {
     private float peso;
     private String sexo;
     private String tarjetaCredito;
-    private List<Cuota> cuotas;
 
-    private List<InscripcionCurso> inscripcionesCurso;
+    private List<InscripcionCurso> inscripcionesCurso= new ArrayList<>();
 
     public Cliente(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena,
                    String DNI, int edad, float peso, String sexo, String tarjetaCredito) {
@@ -35,15 +35,11 @@ public class Cliente extends Usuario {
         return datosCliente;
     }
 
-    public List<InscripcionCurso> getInscripcionesCurso() {
-        return inscripcionesCurso;
-    }
-
-    public void setInscripcionesCurso(List<InscripcionCurso> inscripcionesCurso) {
-        this.inscripcionesCurso = inscripcionesCurso;
-    }
-
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
-        inscripcionesCurso.add(inscripcionCurso);
+        this.inscripcionesCurso.add(inscripcionCurso);
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
     }
 }

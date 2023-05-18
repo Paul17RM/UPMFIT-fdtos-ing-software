@@ -12,16 +12,6 @@ public interface IUsuario {
 
     String getNombreUsuario();
 
-    void setContrasenia(String contrasenia);
-
-    void setCorreoElectronico(String correo);
-
-    void setNombreCompleto(String nomre);
-
-    void setNombreUsuario(String nombre);
-
-    boolean validarEmail();
-
     LinkedHashMap<String, String> getInformacionBasica();
 
     LinkedHashMap<String, String> getInformacion();

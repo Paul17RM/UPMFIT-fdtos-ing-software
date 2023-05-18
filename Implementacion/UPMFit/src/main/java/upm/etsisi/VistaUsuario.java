@@ -23,8 +23,8 @@ public class VistaUsuario {
         }
     }
 
-    public void renderShowListaUsuarios(List<Usuario> listaClientesCurso) {
-        for (Usuario usuario : listaClientesCurso) {
+    public void renderShowListaUsuarios(List<IUsuario> listaClientesCurso) {
+        for (IUsuario usuario : listaClientesCurso) {
             LinkedHashMap<String, String> datosUsuario = usuario.getInformacionBasica();
             System.out.println("Datos del usuario " + datosUsuario.get("Nombre de usuario: "));
             for (Map.Entry<String, String> dato : datosUsuario.entrySet()) {

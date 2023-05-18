@@ -20,28 +20,15 @@ public class CursoDeportivo implements ICursoDeportivo {
         return this.nombre;
     }
 
-    @Override
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public List<SesionDeportivaDeCurso> getSesionesCurso() {
         return this.sesionesCurso;
-    }
-
-    public void setSesionesCurso(List<SesionDeportivaDeCurso> sesionesCurso) {
-        this.sesionesCurso = sesionesCurso;
     }
 
     public List<InscripcionCurso> getInscripcionCursos() {
         return this.inscripcionesCurso;
     }
 
-    public void setInscripcionCursos(List<InscripcionCurso> inscripcionCursos) {
-        this.inscripcionesCurso = inscripcionCursos;
-    }
-
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
-        inscripcionesCurso.add(inscripcionCurso);
+        this.inscripcionesCurso.add(inscripcionCurso);
     }
 }

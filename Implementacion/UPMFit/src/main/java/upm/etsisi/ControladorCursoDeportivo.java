@@ -5,17 +5,11 @@ import java.util.List;
 
 public class ControladorCursoDeportivo {
 
-    private final List<CursoDeportivo> listaDeCursos = new ArrayList<>();
-    private static final VistaCursoDeportivo vistaCurso = VistaCursoDeportivo.getInstance();
-    private static final ControladorUsuario controladorUsuario = ControladorUsuario.getInstance();
+    private final List<CursoDeportivo> listaCursos = new ArrayList<>();
+    private final VistaCursoDeportivo vistaCurso = VistaCursoDeportivo.getInstance();
+    private final ControladorUsuario controladorUsuario = ControladorUsuario.getInstance();
     private static final ControladorCursoDeportivo controladorCursoDeportivo = new ControladorCursoDeportivo();
-    private static final ControladorInscripciones controladorInscripciones = ControladorInscripciones.getInstance();
-    private static final ControladorSalas controladorSalas = ControladorSalas.getInstance();
-
-
-    public CursoDeportivo getCursoDeportivo(String nombre) {
-        return this.findCurso(nombre);
-    }
+    private final ControladorInscripciones controladorInscripciones = ControladorInscripciones.getInstance();
 
     private ControladorCursoDeportivo() {
     }
@@ -27,18 +21,37 @@ public class ControladorCursoDeportivo {
                 "02/06/2023 19:00",
                 "02/06/2023 10:00",
                 new SalaDeporte(45, 60, 369),
-                new Monitor("Sportacus", "Jose Manuel", "josito@gmail.com", "2Gb&poicv", "3657854F", "ES12 1234 1234 12 1234567890")));
+                new Monitor("Sportacus",
+                        "Jose Manuel",
+                        "josito@gmail.com",
+                        "2Gb&poicv",
+                        "3657854F",
+                        "ES12 1234 1234 12 1234567890")));
 
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Baile,
                 70, "07/06/2023 14:00",
                 "07/06/2023 08:00",
                 new SalaDeporte(60, 100, 420),
-                new Monitor("Mike", "Micheal J Fernandez", "elJordan69@gmail.com", "5Tb&jiji", "86418418F", "ES12 1234 1234 12 12378677890")));
-        this.listaDeCursos.add(new CursoDeportivo(datosCurso, listaSesiones));
+                new Monitor("Mike", "Micheal J Fernandez",
+                        "elJordan69@gmail.com", "5Tb&jiji",
+                        "86418418F", "ES12 1234 1234 12 12378677890")));
+
+        CursoDeportivo cursoDeportivo = new CursoDeportivo(datosCurso, listaSesiones);
+
+        this.controladorInscripciones.inscribirEnCurso(cursoDeportivo, new Cliente("Pablo NPC", "Pablo García Solana",
+                "pablosol@gmail.com", "12efwefasñ3456789KL", "46438429A", 52, 80.5f, "Masculino",
+                "7777777"));
+        this.controladorInscripciones.inscribirEnCurso(cursoDeportivo, new PersonalUPM("MartaSolas",
+                "Marta Solas Martinez", "martaso.martinez@upm.es", "Admin/12",
+                "01530071L", 64, 55.2f, "Femenino", "4238727745695225", 30, TPersonal.PDI));
+        this.controladorInscripciones.inscribirEnCurso(cursoDeportivo, new Estudiante("FedericoGomez",
+                "Federico Gomez Gonzalez", "federico.gomez@alumnos.upm.es",
+                "Password_1", "60951938Y", 20, 80.6f, "Masculino", "4506116367141129", "bs001"));
+        this.listaCursos.add(cursoDeportivo);
     }
 
     public void darDeAltaCurso() {
-        darDeAltaCurso(vistaCurso.mostrarFormularioRegistroCurso());
+        this.darDeAltaCurso(this.vistaCurso.mostrarFormularioRegistroCurso());
     }
 
     public static ControladorCursoDeportivo getInstance() {
@@ -59,30 +72,23 @@ public class ControladorCursoDeportivo {
     }
 
     public void mostrarDetallesCurso() {
-        if (listaDeCursos.isEmpty()) {
-            vistaCurso.noHayCursos();
-            return;
+        if(this.hayCursos()) {
+            CursoDeportivo cursoDeportivo = this.vistaCurso.seleccionarCurso(this.listaCursos);
+            this.vistaCurso.renderShowCurso(cursoDeportivo);
+            this.controladorUsuario.showListaUsuarios(this.controladorInscripciones.getListaClientesCurso(cursoDeportivo.getNombre()));
         }
-        CursoDeportivo cursoDeportivo = vistaCurso.seleccionarCurso(listaDeCursos);
-        vistaCurso.renderShowCurso(cursoDeportivo);
-        //controladorUsuario.showListaUsuarios(controladorInscripciones.getListaClientesCurso(cursoDeportivo.getNombre()));
     }
 
-    public List<CursoDeportivo> getListaDeCursos() {
-        return this.listaDeCursos;
+    public boolean hayCursos() {
+        if (this.listaCursos.isEmpty()) {
+            this.vistaCurso.noHayCursos();
+            return false;
+        } else {
+            return true;
+        }
     }
-
 
     public CursoDeportivo getCursoAInscribir() {
         return vistaCurso.seleccionarCurso(listaDeCursos);
-    }
-
-    public void asociarSesionesYSalas(List<SesionDeportiva> sesionesDeportivas, List<SalaDeporte> salasDeporte) {
-        for (int i = 0; i < sesionesDeportivas.size(); i++)
-            sesionesDeportivas.get(i).setSala(salasDeporte.get(i));
-    }
-
-    private void asociarSesionYSala(SesionDeportiva sesionDeportiva, SalaDeporte salaDeporte) {
-        sesionDeportiva.setSala(salaDeporte);
     }
 }
