@@ -4,10 +4,6 @@ import java.util.LinkedHashMap;
 
 public interface IUsuario {
 
-    String getContrasenia();
-
-    String getCorreoElectronico();
-
     String getNombreCompleto();
 
     String getNombreUsuario();
