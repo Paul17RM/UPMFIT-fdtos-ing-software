@@ -13,16 +13,6 @@ public class VistaUsuario {
     private VistaUsuario() {
     }
 
-    public void mostrarUsuario(Usuario usuario) {
-        LinkedHashMap<String, String> datosUsuario = usuario.getInformacion();
-        System.out.println("Datos del usuario " + datosUsuario.get("Nombre de usuario: "));
-        for (Map.Entry<String, String> dato : datosUsuario.entrySet()) {
-            if (!dato.getKey().equals("Nombre de usuario: ")) {
-                System.out.println(dato.getKey() + dato.getValue());
-            }
-        }
-    }
-
     public void renderShowListaUsuarios(List<IUsuario> listaClientesCurso) {
         for (IUsuario usuario : listaClientesCurso) {
             LinkedHashMap<String, String> datosUsuario = usuario.getInformacionBasica();

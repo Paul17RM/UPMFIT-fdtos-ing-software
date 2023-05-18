@@ -12,8 +12,4 @@ public interface IUsuario {
 
     LinkedHashMap<String, String> getInformacion();
 
-    String getDNI();
-
-    void setDNI(String DNI);
-
 }

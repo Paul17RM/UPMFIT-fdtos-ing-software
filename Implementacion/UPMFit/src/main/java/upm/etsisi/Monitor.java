@@ -16,7 +16,7 @@ public class Monitor extends Usuario {
     public LinkedHashMap<String, String> getInformacion() {
         LinkedHashMap<String, String> datosMonitor;
         datosMonitor = super.getInformacionBasica();
-        datosMonitor.put("Numero de cuenta", numeroCuenta);
+        datosMonitor.put("Numero de cuenta", this.numeroCuenta);
         return datosMonitor;
     }
 
