@@ -62,26 +62,11 @@ public class ControladorUsuario {
         }
     }
 
-    private Usuario findUser(String email) {
-        for (Usuario usuario : this.listaUsuarios) {
-            if (usuario.getCorreoElectronico().equals(email)) {
-                return usuario;
-            }
-        }
-        return null;
-    }
 
     public static ControladorUsuario getInstance() {
         return controladorUsuario;
     }
 
-    public Usuario getUsuario(String email) {
-        return findUser(email);
-    }
-
-    public void showUsuario(String email) {
-        vistaUsuario.mostrarUsuario(findUser(email));
-    }
 
     public void showListaUsuarios(List<IUsuario> listaClientesCurso) {
         this.vistaUsuario.renderShowListaUsuarios(listaClientesCurso);
@@ -96,7 +81,8 @@ public class ControladorUsuario {
                 || !this.nombreValido(datosUsuario.get("nombreUsuario"))
                 || Integer.parseInt(datosUsuario.get("edad")) < 0
                 || Float.parseFloat(datosUsuario.get("peso")) < 0
-                || !validarDNI(datosUsuario.get("DNI")));
+                || !this.validarDNI(datosUsuario.get("DNI"))
+                || !this.validarCorreo(datosUsuario.get("correoElectronico")));
 
         UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
         if (rolUsuario== null) {
@@ -107,6 +93,11 @@ public class ControladorUsuario {
             datosUsuario.put("matricula", this.vistaUsuario.mostrarFormularioAlumno());
         }
     }
+
+    private boolean validarCorreo(String correo) {
+        return correo.endsWith("@gmail.com") || new Autenticacion().existeCuentaUPM(correo) || correo.endsWith("@yahoo.com");
+    }
+
 
     private boolean validarDNI(String dni) {
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";

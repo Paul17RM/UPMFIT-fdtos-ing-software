@@ -2,23 +2,13 @@ package upm.etsisi;
 
 import java.sql.Date;
 
-public class InscripcionCurso implements IInscripcionCurso {
+public class InscripcionCurso {
 
     private Date fecha;
     private Cliente cliente;
     private CursoDeportivo cursoDeportivo;
 
     public InscripcionCurso(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    @Override
-    public Date getFecha() {
-        return this.fecha;
-    }
-
-    @Override
-    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

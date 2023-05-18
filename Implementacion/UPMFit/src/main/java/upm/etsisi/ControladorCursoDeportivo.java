@@ -58,19 +58,6 @@ public class ControladorCursoDeportivo {
         return controladorCursoDeportivo;
     }
 
-    private CursoDeportivo findCurso(String nombre) {
-        for (CursoDeportivo curso : listaDeCursos) {
-            if (curso.getNombre().equals(nombre)) {
-                return curso;
-            }
-        }
-        return null;
-    }
-
-    public void mostrarCursos() {
-        vistaCurso.renderShowListaCursos(listaDeCursos);
-    }
-
     public void mostrarDetallesCurso() {
         if(this.hayCursos()) {
             CursoDeportivo cursoDeportivo = this.vistaCurso.seleccionarCurso(this.listaCursos);
@@ -89,6 +76,6 @@ public class ControladorCursoDeportivo {
     }
 
     public CursoDeportivo getCursoAInscribir() {
-        return vistaCurso.seleccionarCurso(listaDeCursos);
+        return this.vistaCurso.seleccionarCurso(this.listaCursos);
     }
 }
