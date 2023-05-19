@@ -72,4 +72,8 @@ public class VistaUsuario {
         System.out.print("Introduce la matrícula: ");
         return scanner.nextLine().trim();
     }
+
+    public void mostrarErrorDatos() {
+        System.out.println("Datos erroneos introducidos");
+    }
 }

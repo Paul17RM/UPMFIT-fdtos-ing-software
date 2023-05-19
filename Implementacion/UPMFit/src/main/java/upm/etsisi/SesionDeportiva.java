@@ -6,23 +6,20 @@ public abstract class SesionDeportiva {
     private int aforo;
     private String fechaFin;
     private String fechaInicio;
-    private SalaDeporte sala; // esto antes era una lista, hay que cambiar en el enterprise que esta como una agregacion
     private Monitor monitor;
 
-    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio, SalaDeporte sala) {
+    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio) {
         this.actividad = actividad;
         this.aforo = aforo;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
-        this.sala = sala;
     }
 
-    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio, SalaDeporte sala, Monitor monitor) {
+    public SesionDeportiva(TActividad actividad, int aforo, String fechaFin, String fechaInicio, Monitor monitor) {
         this.actividad = actividad;
         this.aforo = aforo;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
-        this.sala = sala;
         this.monitor = monitor;
     }
 

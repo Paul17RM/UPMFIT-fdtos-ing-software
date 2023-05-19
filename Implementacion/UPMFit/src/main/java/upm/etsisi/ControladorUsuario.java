@@ -74,9 +74,14 @@ public class ControladorUsuario {
 
     public void crearUsuario() {
         HashMap<String, String> datosUsuario;
-
+        int i = 0;
         do {
-            datosUsuario = this.vistaUsuario.mostrarFormularioRegistro();
+            if (i > 0) {
+                VistaUsuario.getInstance().mostrarErrorDatos();
+            }
+            i++;
+            datosUsuario = VistaUsuario.getInstance().mostrarFormularioRegistro();
+
         } while (!this.constrasenaValida(datosUsuario.get("contrasena"))
                 || !this.nombreValido(datosUsuario.get("nombreUsuario"))
                 || Integer.parseInt(datosUsuario.get("edad")) < 0
@@ -85,12 +90,12 @@ public class ControladorUsuario {
                 || !this.validarCorreo(datosUsuario.get("correoElectronico")));
 
         UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
-        if (rolUsuario== null) {
+        if (rolUsuario == null) {
             crearUsuario(datosUsuario);
         } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
-            datosUsuario.put("antiguedad", this.vistaUsuario.mostrarFormularioPersonal());
-        }else if (rolUsuario.equals(UPMUsers.ALUMNO)){
-            datosUsuario.put("matricula", this.vistaUsuario.mostrarFormularioAlumno());
+            datosUsuario.put("antiguedad", VistaUsuario.getInstance().mostrarFormularioPersonal());
+        } else if (rolUsuario.equals(UPMUsers.ALUMNO)) {
+            datosUsuario.put("matricula", VistaUsuario.getInstance().mostrarFormularioAlumno());
         }
     }
 

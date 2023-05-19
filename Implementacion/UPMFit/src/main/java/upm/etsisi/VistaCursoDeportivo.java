@@ -1,6 +1,8 @@
 package upm.etsisi;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class VistaCursoDeportivo {
@@ -17,7 +19,15 @@ public class VistaCursoDeportivo {
 
     public void renderShowCurso(CursoDeportivo curso) {
         List<SesionDeportivaDeCurso> listaSesiones = curso.getSesionesCurso();
-        System.out.println("Las sesiones del curso " + curso.getNombre() + " son: ");
+        System.out.println("Las sesiones del curso " + curso.getNombre()+" impartidas por: ");
+        LinkedHashMap<String, String> datosUsuario = curso.getMonitor().getInformacionBasica();
+        System.out.println(datosUsuario.get("Nombre de usuario: "));
+        for (Map.Entry<String, String> dato : datosUsuario.entrySet()) {
+            if (!dato.getKey().equals("Nombre de usuario: ")) {
+                System.out.println(dato.getKey() + dato.getValue());
+            }
+        }
+        System.out.println();
         for (SesionDeportivaDeCurso sesionDeportivaDeCurso : listaSesiones) {
             System.out.println();
             System.out.println("Sesion de " + sesionDeportivaDeCurso.getActividad().name());

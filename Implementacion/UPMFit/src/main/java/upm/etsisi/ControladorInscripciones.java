@@ -28,7 +28,7 @@ public class ControladorInscripciones {
     }
 
     public void inscribirEnCurso(CursoDeportivo cursoDeportivo, Cliente cliente) {
-        InscripcionCurso inscripcionCurso = new InscripcionCurso(new Date(System.currentTimeMillis()));
+        InscripcionCurso inscripcionCurso = new InscripcionCurso();
         inscripcionCurso.setCursoDeportivo(cursoDeportivo);
         inscripcionCurso.setCliente(cliente);
         cursoDeportivo.addInscripcionCurso(inscripcionCurso);

@@ -31,4 +31,8 @@ public class CursoDeportivo implements ICursoDeportivo {
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
         this.inscripcionesCurso.add(inscripcionCurso);
     }
+
+    public Monitor getMonitor() {
+        return monitor;
+    }
 }
