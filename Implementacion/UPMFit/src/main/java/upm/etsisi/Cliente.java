@@ -35,6 +35,10 @@ public class Cliente extends Usuario {
         return datosCliente;
     }
 
+    public List<InscripcionCurso> getInscripcionesCurso() {
+        return inscripcionesCurso;
+    }
+
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
         this.inscripcionesCurso.add(inscripcionCurso);
     }

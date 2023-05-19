@@ -4,12 +4,12 @@ import java.sql.Date;
 
 public class InscripcionCurso {
 
-    private Date fecha;
+
     private Cliente cliente;
     private CursoDeportivo cursoDeportivo;
 
-    public InscripcionCurso(Date fecha) {
-        this.fecha = fecha;
+    public InscripcionCurso() {
+
     }
 
     public Cliente getCliente() {
