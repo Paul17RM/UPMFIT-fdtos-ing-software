@@ -16,7 +16,6 @@ import java.util.List;
 public class ControladorUsuario {
 
     private final List<Usuario> listaUsuarios = new ArrayList<>();
-    private final VistaUsuario vistaUsuario = VistaUsuario.getInstance();
     private static final ControladorUsuario controladorUsuario = new ControladorUsuario();
 
     private ControladorUsuario() {
@@ -69,7 +68,7 @@ public class ControladorUsuario {
 
 
     public void showListaUsuarios(List<IUsuario> listaClientesCurso) {
-        this.vistaUsuario.renderShowListaUsuarios(listaClientesCurso);
+        VistaUsuario.getInstance().renderShowListaUsuarios(listaClientesCurso);
     }
 
     public void crearUsuario() {

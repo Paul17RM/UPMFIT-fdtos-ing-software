@@ -39,10 +39,6 @@ public abstract class SesionDeportiva {
         return this.fechaInicio;
     }
 
-    public SalaDeporte getSala() {
-        return this.sala;
-    }
-
     public Monitor getMonitor() {
         return monitor;
     }

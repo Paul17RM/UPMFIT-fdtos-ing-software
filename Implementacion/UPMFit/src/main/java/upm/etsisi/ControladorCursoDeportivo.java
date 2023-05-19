@@ -11,7 +11,7 @@ public class ControladorCursoDeportivo {
     private ControladorCursoDeportivo() {
     }
 
-    private void darDeAltaCurso(String datosCurso) {
+    private void darDeAltaCurso(String datosCurso){
         List<SesionDeportivaDeCurso> listaSesiones = new ArrayList<>();
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Natacion,
                 52,

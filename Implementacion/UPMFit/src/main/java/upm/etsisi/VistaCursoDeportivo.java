@@ -34,10 +34,6 @@ public class VistaCursoDeportivo {
             System.out.println("Comienza el " + sesionDeportivaDeCurso.getFechaInicio());
             System.out.println("Acaba el " + sesionDeportivaDeCurso.getFechaFin());
             System.out.println("El numero de plazas es de " + (sesionDeportivaDeCurso.getAforo() - curso.getInscripcionCursos().size()));
-            System.out.println("Se imparte en las sala: "+sesionDeportivaDeCurso.getSala().getId());
-            System.out.println("Con tamaño: " + sesionDeportivaDeCurso.getSala().getTamanio() + " m²");
-            System.out.println("Con aforo: " + sesionDeportivaDeCurso.getSala().getAforo());
-            System.out.println("Por el profesor " + sesionDeportivaDeCurso.getMonitor().getNombreCompleto() + " Alias " + sesionDeportivaDeCurso.getMonitor().getNombreUsuario());
             System.out.println();
         }
         System.out.println("Usuarios inscritos al curso: \n");
