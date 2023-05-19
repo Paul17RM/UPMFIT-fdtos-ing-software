@@ -73,7 +73,7 @@ public class VistaUsuario {
         return scanner.nextLine().trim();
     }
 
-    public void mostrarErrorDatos() {
-        System.out.println("Datos erroneos introducidos");
+    public void mostrarErrorDatos(String error) {
+        System.out.println(error);
     }
 }

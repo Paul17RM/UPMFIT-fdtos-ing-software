@@ -11,4 +11,6 @@ public interface ICursoDeportivo {
     List<SesionDeportivaDeCurso> getSesionesCurso();
 
     void addInscripcionCurso(InscripcionCurso inscripcionCurso);
+
+    Monitor getMonitor();
 }

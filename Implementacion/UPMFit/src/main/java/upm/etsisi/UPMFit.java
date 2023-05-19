@@ -4,8 +4,6 @@ import upm.menu.MainUPMFitMenu;
 
 public class UPMFit {
 
-
-
     public static void main(String[] args) {
         new UPMFit().initialize();
     }

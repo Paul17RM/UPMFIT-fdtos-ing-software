@@ -43,7 +43,7 @@ public abstract class Menu {
     }
 
     protected void execChoosedOption() {
-        this.options[VistaSistema.getInstance().opcionAEjecutar(this.size)].interact();
+        this.options[VistaSistema.getInstance().opcionAElegir(this.size)].interact();
     }
 
     protected void add(Option option) {

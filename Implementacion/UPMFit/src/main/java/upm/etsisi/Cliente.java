@@ -12,7 +12,7 @@ public class Cliente extends Usuario {
     private String sexo;
     private String tarjetaCredito;
 
-    private List<InscripcionCurso> inscripcionesCurso= new ArrayList<>();
+    private final List<InscripcionCurso> inscripcionesCurso = new ArrayList<>();
 
     public Cliente(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena,
                    String DNI, int edad, float peso, String sexo, String tarjetaCredito) {
@@ -44,19 +44,17 @@ public class Cliente extends Usuario {
     }
 
     public void setDescuento(int descuento) {
-        this.descuento = descuento;
+        if (validarDescuento(descuento)) {
+            this.descuento = descuento;
+        }
     }
 
     public int getDescuento() {
         return descuento;
     }
 
-    public static boolean validarDescuento(int descuento){
-        if(descuento>=0&&descuento<=100){
-            return true;
-        }else{
-            return false;
-        }
+    public static boolean validarDescuento(int descuento) {
+        return descuento >= 0 && descuento <= 100;
     }
 
 }

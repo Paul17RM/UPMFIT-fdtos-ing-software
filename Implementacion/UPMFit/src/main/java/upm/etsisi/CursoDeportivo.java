@@ -15,6 +15,7 @@ public class CursoDeportivo implements ICursoDeportivo {
         this.sesionesCurso = sesionesCurso;
         this.inscripcionesCurso = new ArrayList<>();
         this.monitor = monitor;
+        monitor.setCursoDeportivo(this);
     }
 
     @Override
@@ -22,19 +23,23 @@ public class CursoDeportivo implements ICursoDeportivo {
         return this.nombre;
     }
 
+    @Override
     public List<SesionDeportivaDeCurso> getSesionesCurso() {
         return this.sesionesCurso;
     }
 
+    @Override
     public List<InscripcionCurso> getInscripcionCursos() {
         return this.inscripcionesCurso;
     }
 
+    @Override
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
         this.inscripcionesCurso.add(inscripcionCurso);
     }
 
+    @Override
     public Monitor getMonitor() {
-        return monitor;
+        return this.monitor;
     }
 }

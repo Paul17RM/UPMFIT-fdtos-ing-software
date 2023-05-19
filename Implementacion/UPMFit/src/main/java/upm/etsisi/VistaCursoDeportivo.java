@@ -19,7 +19,7 @@ public class VistaCursoDeportivo {
 
     public void renderShowCurso(CursoDeportivo curso) {
         List<SesionDeportivaDeCurso> listaSesiones = curso.getSesionesCurso();
-        System.out.println("Las sesiones del curso " + curso.getNombre()+" impartidas por: ");
+        System.out.println("\nLas sesiones del curso " + curso.getNombre()+" impartidas por: ");
         LinkedHashMap<String, String> datosUsuario = curso.getMonitor().getInformacionBasica();
         System.out.println(datosUsuario.get("Nombre de usuario: "));
         for (Map.Entry<String, String> dato : datosUsuario.entrySet()) {
@@ -27,9 +27,8 @@ public class VistaCursoDeportivo {
                 System.out.println(dato.getKey() + dato.getValue());
             }
         }
-        System.out.println();
+        System.out.println("\nSon: ");
         for (SesionDeportivaDeCurso sesionDeportivaDeCurso : listaSesiones) {
-            System.out.println();
             System.out.println("Sesion de " + sesionDeportivaDeCurso.getActividad().name());
             System.out.println("Comienza el " + sesionDeportivaDeCurso.getFechaInicio());
             System.out.println("Acaba el " + sesionDeportivaDeCurso.getFechaFin());
@@ -56,29 +55,14 @@ public class VistaCursoDeportivo {
     public CursoDeportivo seleccionarCurso(List<CursoDeportivo> listaDeCursos) {
         renderShowListaCursos(listaDeCursos);
         System.out.println("¿Que curso quieres seleccionar?: ");
-        return listaDeCursos.get(pedirNumero(listaDeCursos.size()));
+        return listaDeCursos.get(VistaSistema.getInstance().opcionAElegir(listaDeCursos.size()));
     }
 
     public void noHayCursos() {
         System.out.println("Actualmente no hay cursos disponibles");
     }
 
-    public int pedirNumero(int max) {
-        Scanner scanner = new Scanner(System.in);
-        int opcion = 0;
-        boolean ok = false;
-        do {
-            System.out.print("Elige una opcion: ");
-            if (scanner.hasNextInt()) {
-                opcion = scanner.nextInt() - 1;
-                ok = 0 <= opcion && opcion < max;
-            } else {
-                scanner.nextLine();
-            }
-            if (!ok) {
-                System.out.println(max==1?"Error: Ingresa un número válido (1)":"Error: Ingresa un número válido entre 1 y " + max);
-            }
-        } while (!ok);
-        return opcion;
+    public void cursoYaExiste() {
+        System.out.println("ERROR El curso introducido ya existe");
     }
 }

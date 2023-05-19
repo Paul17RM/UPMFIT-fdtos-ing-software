@@ -37,7 +37,15 @@ public class VistaSistema {
         System.out.println(titulo);
     }
 
-    public int opcionAEjecutar(int tamanio) {
+    public void resgistroCorrectamente(String entidad) {
+        System.out.println("El "+entidad+" se ha registrado correctamente en UPMFit");
+    }
+
+    public  void inscripcionCorrecta(){
+        System.out.println("Se ha inscrito correctamente en el curso ");
+    }
+
+    public int opcionAElegir(int tamanio) {
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         boolean ok = false;
@@ -51,7 +59,7 @@ public class VistaSistema {
             }
 
             if (!ok) {
-                System.out.println("opcion no valida");
+                System.out.println("Opcion no valida");
             }
 
         } while (!ok);

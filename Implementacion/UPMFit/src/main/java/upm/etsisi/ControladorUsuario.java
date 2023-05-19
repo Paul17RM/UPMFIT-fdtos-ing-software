@@ -61,7 +61,6 @@ public class ControladorUsuario {
         }
     }
 
-
     public static ControladorUsuario getInstance() {
         return controladorUsuario;
     }
@@ -73,20 +72,38 @@ public class ControladorUsuario {
 
     public void crearUsuario() {
         HashMap<String, String> datosUsuario;
-        int i = 0;
-        do {
-            if (i > 0) {
-                VistaUsuario.getInstance().mostrarErrorDatos();
-            }
-            i++;
-            datosUsuario = VistaUsuario.getInstance().mostrarFormularioRegistro();
+        boolean hayError;
 
-        } while (!this.constrasenaValida(datosUsuario.get("contrasena"))
-                || !this.nombreValido(datosUsuario.get("nombreUsuario"))
-                || Integer.parseInt(datosUsuario.get("edad")) < 0
-                || Float.parseFloat(datosUsuario.get("peso")) < 0
-                || !this.validarDNI(datosUsuario.get("DNI"))
-                || !this.validarCorreo(datosUsuario.get("correoElectronico")));
+        do {
+            datosUsuario = VistaUsuario.getInstance().mostrarFormularioRegistro();
+            hayError = false;
+
+            if (!nombreValido(datosUsuario.get("nombreUsuario"))) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR El numero de caracteres es incorrecto o el nombre no esta disponible");
+                hayError = true;
+            }
+            if (!validarCorreo(datosUsuario.get("correoElectronico"))) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un correo electronico con un formato valido");
+                hayError = true;
+            }
+            if (!constrasenaValida(datosUsuario.get("contrasena"))) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR El formato de la contraseña es incorrecto");
+                hayError = true;
+            }
+            if (!validarDNI(datosUsuario.get("DNI"))) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce in DNI valido");
+                hayError = true;
+            }
+            if (!datosUsuario.get("edad").matches("^[0-9]*$") || Integer.parseInt(datosUsuario.get("edad")) < 0) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un numero valido");
+                hayError = true;
+            }
+            if (!datosUsuario.get("peso").matches("^[0-9]*$") || Float.parseFloat(datosUsuario.get("peso")) < 0) {
+                VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un numero valido");
+                hayError = true;
+            }
+
+        } while (hayError);
 
         UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
         if (rolUsuario == null) {
@@ -96,7 +113,9 @@ public class ControladorUsuario {
         } else if (rolUsuario.equals(UPMUsers.ALUMNO)) {
             datosUsuario.put("matricula", VistaUsuario.getInstance().mostrarFormularioAlumno());
         }
+        VistaSistema.getInstance().resgistroCorrectamente("Usuario");
     }
+
 
     private boolean validarCorreo(String correo) {
         return correo.endsWith("@gmail.com") || new Autenticacion().existeCuentaUPM(correo) || correo.endsWith("@yahoo.com");
@@ -128,7 +147,7 @@ public class ControladorUsuario {
                 }
             }
         } catch (IOException e) {
-            System.out.println("El nombre de usuario esta pendiente de verificacion");
+            System.out.println("El nombre de usuario esta pendiente de verificacion por lo que ciertas funcionalidades no estaran disponibles");
         } finally {
             if (reader != null) {
                 try {

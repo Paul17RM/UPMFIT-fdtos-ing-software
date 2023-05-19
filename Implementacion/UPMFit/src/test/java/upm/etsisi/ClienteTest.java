@@ -5,16 +5,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.Assert.*;
 
 public class ClienteTest {
     Cliente cliente;
-    InscripcionCurso inscripcionCurso=new InscripcionCurso();
+    InscripcionCurso inscripcionCurso=new InscripcionCurso(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
     @Before
     public void setUp() throws Exception {
-        cliente = new Cliente("Enrique", "Enrique De la Fuente", "enriq@alumnos.upm.es", "Ff1#345678",
-                "14266495D", 20, 20, "Femenino", "fgcuyhkdvc");
+        cliente = new Cliente("PLF", "Pedro Luis Fernandez", "p.luis@alumnos.upm.es", "Ff1#345678",
+                "14266495D", 20, 20, "Masculino", "868488968189");
     }
 
     @After

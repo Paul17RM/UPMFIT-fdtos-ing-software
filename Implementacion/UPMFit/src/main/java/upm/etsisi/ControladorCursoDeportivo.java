@@ -11,7 +11,7 @@ public class ControladorCursoDeportivo {
     private ControladorCursoDeportivo() {
     }
 
-    private void darDeAltaCurso(String datosCurso){
+    private void darDeAltaCurso(String datosCurso) {
         List<SesionDeportivaDeCurso> listaSesiones = new ArrayList<>();
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Natacion,
                 52,
@@ -22,7 +22,7 @@ public class ControladorCursoDeportivo {
                 70, "07/06/2023 14:00",
                 "07/06/2023 08:00"));
 
-        CursoDeportivo cursoDeportivo = new CursoDeportivo(datosCurso, listaSesiones,new Monitor("Mike", "Micheal J Fernandez",
+        CursoDeportivo cursoDeportivo = new CursoDeportivo(datosCurso, listaSesiones, new Monitor("Mike", "Micheal J Fernandez",
                 "elJordan69@gmail.com", "5Tb&jiji",
                 "86418418F", "ES12 1234 1234 12 12378677890"));
 
@@ -39,7 +39,22 @@ public class ControladorCursoDeportivo {
     }
 
     public void darDeAltaCurso() {
-        this.darDeAltaCurso(VistaCursoDeportivo.getInstance().mostrarFormularioRegistroCurso());
+        String nombreCurso = VistaCursoDeportivo.getInstance().mostrarFormularioRegistroCurso();
+        if (existeCurso(nombreCurso)) {
+            VistaCursoDeportivo.getInstance().cursoYaExiste();
+        } else {
+            this.darDeAltaCurso(nombreCurso);
+            VistaSistema.getInstance().resgistroCorrectamente("Curso deportivo");
+        }
+    }
+
+    private boolean existeCurso(String nombre) {
+        for (CursoDeportivo curso : listaCursos) {
+            if (curso.getNombre().equals(nombre)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static ControladorCursoDeportivo getInstance() {
@@ -47,20 +62,17 @@ public class ControladorCursoDeportivo {
     }
 
     public void mostrarDetallesCurso() {
-        if(this.hayCursos()) {
+        if (this.hayCursos()) {
             CursoDeportivo cursoDeportivo = VistaCursoDeportivo.getInstance().seleccionarCurso(this.listaCursos);
             VistaCursoDeportivo.getInstance().renderShowCurso(cursoDeportivo);
             ControladorUsuario.getInstance().showListaUsuarios(ControladorInscripciones.getInstance().getListaClientesCurso(cursoDeportivo.getNombre()));
+        } else {
+            VistaCursoDeportivo.getInstance().noHayCursos();
         }
     }
 
     public boolean hayCursos() {
-        if (this.listaCursos.isEmpty()) {
-            VistaCursoDeportivo.getInstance().noHayCursos();
-            return false;
-        } else {
-            return true;
-        }
+        return !this.listaCursos.isEmpty();
     }
 
     public CursoDeportivo getCursoAInscribir() {

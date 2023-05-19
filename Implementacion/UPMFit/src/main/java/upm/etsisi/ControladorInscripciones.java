@@ -1,6 +1,7 @@
 package upm.etsisi;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ControladorInscripciones {
@@ -28,7 +29,7 @@ public class ControladorInscripciones {
     }
 
     public void inscribirEnCurso(CursoDeportivo cursoDeportivo, Cliente cliente) {
-        InscripcionCurso inscripcionCurso = new InscripcionCurso();
+        InscripcionCurso inscripcionCurso = new InscripcionCurso(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         inscripcionCurso.setCursoDeportivo(cursoDeportivo);
         inscripcionCurso.setCliente(cliente);
         cursoDeportivo.addInscripcionCurso(inscripcionCurso);

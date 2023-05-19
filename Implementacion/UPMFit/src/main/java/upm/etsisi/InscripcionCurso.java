@@ -1,15 +1,13 @@
 package upm.etsisi;
 
-import java.sql.Date;
-
 public class InscripcionCurso {
 
-
+    private String fecha;
     private Cliente cliente;
     private CursoDeportivo cursoDeportivo;
 
-    public InscripcionCurso() {
-
+    public InscripcionCurso(String fecha) {
+        this.fecha = fecha;
     }
 
     public Cliente getCliente() {
