@@ -46,4 +46,17 @@ public class Cliente extends Usuario {
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
+
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public static boolean validarDescuento(int descuento){
+        if(descuento>=0&&descuento<=100){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
