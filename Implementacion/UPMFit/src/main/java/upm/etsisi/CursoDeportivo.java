@@ -6,13 +6,13 @@ import java.util.List;
 public class CursoDeportivo implements ICursoDeportivo {
 
     private String nombre;
-    private List<SesionDeportivaDeCurso> sesionesCurso;
+    private List<SesionDeportivaDeCurso> sesiones;
     private List<InscripcionCurso> inscripcionesCurso;
     private Monitor monitor;
 
-    public CursoDeportivo(String nombre, List<SesionDeportivaDeCurso> sesionesCurso, Monitor monitor) {
+    public CursoDeportivo(String nombre, List<SesionDeportivaDeCurso> sesiones, Monitor monitor) {
         this.nombre = nombre;
-        this.sesionesCurso = sesionesCurso;
+        this.sesiones = sesiones;
         this.inscripcionesCurso = new ArrayList<>();
         this.monitor = monitor;
         monitor.setCursoDeportivo(this);
@@ -24,8 +24,8 @@ public class CursoDeportivo implements ICursoDeportivo {
     }
 
     @Override
-    public List<SesionDeportivaDeCurso> getSesionesCurso() {
-        return this.sesionesCurso;
+    public List<SesionDeportivaDeCurso> getSesiones() {
+        return this.sesiones;
     }
 
     @Override

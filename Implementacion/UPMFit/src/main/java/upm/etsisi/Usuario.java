@@ -32,14 +32,4 @@ public abstract class Usuario implements IUsuario {
 
     public abstract LinkedHashMap<String, String> getInformacion();
 
-    @Override
-    public String getNombreCompleto() {
-        return this.nombreCompleto;
-    }
-
-    @Override
-    public String getNombreUsuario() {
-        return this.nombreUsuario;
-    }
-
 }

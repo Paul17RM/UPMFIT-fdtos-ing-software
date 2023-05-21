@@ -18,8 +18,8 @@ public class VistaCursoDeportivo {
     }
 
     public void renderShowCurso(CursoDeportivo curso) {
-        List<SesionDeportivaDeCurso> listaSesiones = curso.getSesionesCurso();
-        System.out.println("\nLas sesiones del curso " + curso.getNombre()+" impartidas por: ");
+        List<SesionDeportivaDeCurso> listaSesiones = curso.getSesiones();
+        System.out.println("\nLas sesiones del curso " + curso.getNombre() + " impartidas por: ");
         LinkedHashMap<String, String> datosUsuario = curso.getMonitor().getInformacionBasica();
         System.out.println(datosUsuario.get("Nombre de usuario: "));
         for (Map.Entry<String, String> dato : datosUsuario.entrySet()) {
@@ -41,7 +41,7 @@ public class VistaCursoDeportivo {
 
     public void renderShowListaCursos(List<CursoDeportivo> listaDeCursos) {
         System.out.println("Los cursos disponible actualmente son: ");
-        for (CursoDeportivo curso : listaDeCursos) {
+        for (ICursoDeportivo curso : listaDeCursos) {
             System.out.println(1 + ". " + curso.getNombre());
         }
     }

@@ -8,7 +8,7 @@ public interface ICursoDeportivo {
 
     List<InscripcionCurso> getInscripcionCursos();
 
-    List<SesionDeportivaDeCurso> getSesionesCurso();
+    List<SesionDeportivaDeCurso> getSesiones();
 
     void addInscripcionCurso(InscripcionCurso inscripcionCurso);
 

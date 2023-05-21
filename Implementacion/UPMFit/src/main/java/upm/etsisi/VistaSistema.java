@@ -38,10 +38,10 @@ public class VistaSistema {
     }
 
     public void resgistroCorrectamente(String entidad) {
-        System.out.println("El "+entidad+" se ha registrado correctamente en UPMFit");
+        System.out.println("El " + entidad + " se ha registrado correctamente en UPMFit");
     }
 
-    public  void inscripcionCorrecta(){
+    public void inscripcionCorrecta() {
         System.out.println("Se ha inscrito correctamente en el curso ");
     }
 

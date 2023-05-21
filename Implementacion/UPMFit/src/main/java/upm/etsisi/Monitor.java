@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 public class Monitor extends Usuario {
 
     private String numeroCuenta;
-
     private CursoDeportivo cursoDeportivo;
 
     public Monitor(String nombreUsuario, String nombreCompleto, String correoElectronico, String contrasena, String DNI, String numeroCuenta) {
