@@ -27,10 +27,10 @@ public class ControladorCursoDeportivo {
                 "07/06/2023 08:00"));
 
         CursoDeportivo cursoDeportivo = new CursoDeportivo(datosCurso, listaSesiones, new Monitor("Mike", "Micheal J Fernandez",
-                "elJordan69@gmail.com", "5Tb&jiji",
+                "elJordan@gmail.com", "5Tb&jiji",
                 "86418418F", "ES12 1234 1234 12 12378677890"));
 
-        ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new Cliente("Pablo NPC", "Pablo García Solana",
+        ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new Cliente("Pablo", "Pablo García Solana",
                 "pablosol@gmail.com", "12efwefasñ3456789KL", "46438429A", 52, 80.5f, "Masculino",
                 "7777777"));
         ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new PersonalUPM("MartaSolas",
