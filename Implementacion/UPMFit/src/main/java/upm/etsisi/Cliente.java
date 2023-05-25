@@ -36,11 +36,13 @@ public class Cliente extends Usuario {
     }
 
     public List<InscripcionCurso> getInscripcionesCurso() {
-        return inscripcionesCurso;
+        return this.inscripcionesCurso;
     }
 
     public void addInscripcionCurso(InscripcionCurso inscripcionCurso) {
-        this.inscripcionesCurso.add(inscripcionCurso);
+        if (inscripcionCurso != null) {
+            this.inscripcionesCurso.add(inscripcionCurso);
+        }
     }
 
     public void setDescuento(int descuento) {
@@ -50,7 +52,7 @@ public class Cliente extends Usuario {
     }
 
     public int getDescuento() {
-        return descuento;
+        return this.descuento;
     }
 
     public static boolean validarDescuento(int descuento) {

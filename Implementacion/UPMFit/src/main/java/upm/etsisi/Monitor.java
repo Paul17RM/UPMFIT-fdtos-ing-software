@@ -20,8 +20,8 @@ public class Monitor extends Usuario {
         return datosMonitor;
     }
 
-    public void  setCursoDeportivo(CursoDeportivo cursoDeportivo){
-        this.cursoDeportivo=cursoDeportivo;
+    public void setCursoDeportivo(CursoDeportivo cursoDeportivo) {
+        this.cursoDeportivo = cursoDeportivo;
     }
 
 }

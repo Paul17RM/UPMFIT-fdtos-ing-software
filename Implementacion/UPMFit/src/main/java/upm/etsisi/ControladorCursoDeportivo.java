@@ -11,6 +11,10 @@ public class ControladorCursoDeportivo {
     private ControladorCursoDeportivo() {
     }
 
+    public static ControladorCursoDeportivo getInstance() {
+        return controladorCursoDeportivo;
+    }
+
     private void darDeAltaCurso(String datosCurso) {
         List<SesionDeportivaDeCurso> listaSesiones = new ArrayList<>();
         listaSesiones.add(new SesionDeportivaDeCurso(TActividad.Natacion,
@@ -40,7 +44,7 @@ public class ControladorCursoDeportivo {
 
     public void darDeAltaCurso() {
         String nombreCurso = VistaCursoDeportivo.getInstance().mostrarFormularioRegistroCurso();
-        if (existeCurso(nombreCurso)) {
+        if (existeCurso(nombreCurso) || nombreCurso.isEmpty()) {
             VistaCursoDeportivo.getInstance().cursoYaExiste();
         } else {
             this.darDeAltaCurso(nombreCurso);
@@ -55,10 +59,6 @@ public class ControladorCursoDeportivo {
             }
         }
         return false;
-    }
-
-    public static ControladorCursoDeportivo getInstance() {
-        return controladorCursoDeportivo;
     }
 
     public void mostrarDetallesCurso() {

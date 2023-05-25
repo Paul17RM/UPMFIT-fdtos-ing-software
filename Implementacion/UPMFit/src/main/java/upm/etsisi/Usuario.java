@@ -26,10 +26,12 @@ public abstract class Usuario implements IUsuario {
         datosUsuario.put("Nombre completo: ", this.nombreCompleto);
         datosUsuario.put("Correo Electronico: ", this.correoElectronico);
         datosUsuario.put("DNI: ", this.DNI);
-        //datosUsuario.put("Contraseñas: ",nombreUsuario);
         return datosUsuario;
     }
 
     public abstract LinkedHashMap<String, String> getInformacion();
 
+    public String getCorreoElectronico() {
+        return this.correoElectronico;
+    }
 }

@@ -40,6 +40,6 @@ public abstract class SesionDeportiva {
     }
 
     public Monitor getMonitor() {
-        return monitor;
+        return this.monitor;
     }
 }

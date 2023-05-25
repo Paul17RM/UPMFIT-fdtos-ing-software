@@ -30,7 +30,7 @@ public class VistaUsuario {
         HashMap<String, String> datosUsuario = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Introduce un nombre de usuario (debe tener entre 3 y 10 caracteres):");
+        System.out.print("Introduce un nombre de usuario (debe tener entre 3 y 10 caracteres): ");
         datosUsuario.put("nombreUsuario", scanner.nextLine().trim());
 
         System.out.print("Introduce el nombre y apellidos: ");
@@ -39,9 +39,12 @@ public class VistaUsuario {
         System.out.print("Introduce el correo electrónico: ");
         datosUsuario.put("correoElectronico", scanner.nextLine().trim());
 
-        System.out.print("Introduce una contraseña válida (debe tener al menos una letra mayúscula," +
+        System.out.print("Introduce una contraseña válida (debe tener al menos una letra mayúscula,\n" +
                 " una letra minúscula, un número, un símbolo y tener una longitud entre 8 y 12 caracteres):");
         datosUsuario.put("contrasena", scanner.nextLine().trim());
+
+        System.out.print("Introduce la contraseña de nuevo: ");
+        datosUsuario.put("contrasena1", scanner.nextLine().trim());
 
         System.out.print("Introduce el DNI: ");
         datosUsuario.put("DNI", scanner.nextLine().trim());

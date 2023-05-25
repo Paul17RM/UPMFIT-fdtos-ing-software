@@ -59,10 +59,13 @@ public class VistaCursoDeportivo {
     }
 
     public void noHayCursos() {
+        System.out.println("\n*************************************");
         System.out.println("Actualmente no hay cursos disponibles");
+        System.out.println("*************************************");
+
     }
 
     public void cursoYaExiste() {
-        System.out.println("ERROR El curso introducido ya existe");
+        System.out.println("\nERROR El curso introducido ya existe o el nombre no esta permitido");
     }
 }

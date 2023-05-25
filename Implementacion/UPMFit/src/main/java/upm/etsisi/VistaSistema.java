@@ -23,7 +23,6 @@ public class VistaSistema {
         System.out.println("####################################################################################");
     }
 
-
     public void despedida() {
         System.out.println("####################################################################################");
         System.out.println("#																				   #");
@@ -38,11 +37,11 @@ public class VistaSistema {
     }
 
     public void resgistroCorrectamente(String entidad) {
-        System.out.println("El " + entidad + " se ha registrado correctamente en UPMFit");
+        System.out.println("\nEl " + entidad + " se ha registrado correctamente en UPMFit");
     }
 
     public void inscripcionCorrecta() {
-        System.out.println("Se ha inscrito correctamente en el curso ");
+        System.out.println("\nSe ha inscrito correctamente en el curso ");
     }
 
     public int opcionAElegir(int tamanio) {

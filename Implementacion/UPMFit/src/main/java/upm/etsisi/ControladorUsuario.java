@@ -86,7 +86,7 @@ public class ControladorUsuario {
                 VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un correo electronico con un formato valido");
                 hayError = true;
             }
-            if (!constrasenaValida(datosUsuario.get("contrasena"))) {
+            if (!constrasenaValida(datosUsuario.get("contrasena")) || !datosUsuario.get("contrasena").equals(datosUsuario.get("contrasena1"))) {
                 VistaUsuario.getInstance().mostrarErrorDatos("ERROR El formato de la contraseña es incorrecto");
                 hayError = true;
             }
@@ -94,18 +94,18 @@ public class ControladorUsuario {
                 VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce in DNI valido");
                 hayError = true;
             }
-            if (!datosUsuario.get("edad").matches("^[0-9]*$") || Integer.parseInt(datosUsuario.get("edad")) < 0) {
+            if (datosUsuario.get("edad").isEmpty() || !datosUsuario.get("edad").matches("^[0-9]*$") || Integer.parseInt(datosUsuario.get("edad")) < 0) {
                 VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un numero valido");
                 hayError = true;
             }
-            if (!datosUsuario.get("peso").matches("^[0-9]*$") || Float.parseFloat(datosUsuario.get("peso")) < 0) {
+            if (datosUsuario.get("peso").isEmpty() || !datosUsuario.get("peso").matches("^[0-9]*$") || Float.parseFloat(datosUsuario.get("peso")) < 0) {
                 VistaUsuario.getInstance().mostrarErrorDatos("ERROR Introduce un numero valido");
                 hayError = true;
             }
 
         } while (hayError);
 
-        UPMUsers rolUsuario = new ObtencionDeRol().get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
+        UPMUsers rolUsuario = ObtencionDeRol.get_UPM_AccountRol(datosUsuario.get("correoElectronico"));
         if (rolUsuario == null) {
             crearUsuario(datosUsuario);
         } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
@@ -116,11 +116,9 @@ public class ControladorUsuario {
         VistaSistema.getInstance().resgistroCorrectamente("Usuario");
     }
 
-
     private boolean validarCorreo(String correo) {
         return correo.endsWith("@gmail.com") || new Autenticacion().existeCuentaUPM(correo) || correo.endsWith("@yahoo.com");
     }
-
 
     private boolean validarDNI(String dni) {
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
@@ -136,18 +134,18 @@ public class ControladorUsuario {
     }
 
     private boolean nombreValido(String nombre) {
-        File nameList = new File("filename.txt");
+        File nameList = new File("Nombres_prohibidos.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(nameList));
-            String line = "";
+            String line;
             while ((line = reader.readLine()) != null) {
                 if (line.contains(nombre)) {
                     return false;
                 }
             }
         } catch (IOException e) {
-            System.out.println("El nombre de usuario esta pendiente de verificacion por lo que ciertas funcionalidades no estaran disponibles");
+
         } finally {
             if (reader != null) {
                 try {
