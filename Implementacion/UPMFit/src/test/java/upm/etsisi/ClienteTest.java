@@ -25,10 +25,17 @@ public class ClienteTest {
         this.cliente.getInscripcionesCurso().remove(this.inscripcionCurso);
     }
 
+    // CP1= V1(InscripcionCurso inscripcionCurso)
     @Test
-    public void addInscripcionCurso() {
+    public void addInscripcionCursoCP1() {
         this.cliente.addInscripcionCurso(inscripcionCurso);
         assertEquals(this.cliente.getInscripcionesCurso().contains(inscripcionCurso),true);
+    }
+    // CP2= N1 (null)
+    @Test
+    public void addInscripcionCursoCP2() {
+        this.cliente.addInscripcionCurso(null);
+        assertEquals(this.cliente.getInscripcionesCurso().contains(null),false);
     }
 
     //CP1= V1 (44)

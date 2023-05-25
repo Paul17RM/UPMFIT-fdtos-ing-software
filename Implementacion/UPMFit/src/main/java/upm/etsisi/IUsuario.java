@@ -8,4 +8,6 @@ public interface IUsuario {
 
     LinkedHashMap<String, String> getInformacion();
 
+    String getCorreoElectronico();
+
 }

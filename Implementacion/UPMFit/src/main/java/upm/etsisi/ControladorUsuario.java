@@ -117,6 +117,11 @@ public class ControladorUsuario {
     }
 
     private boolean validarCorreo(String correo) {
+        for (int i = 0; i < this.listaUsuarios.size(); i++) {
+            if (this.listaUsuarios.get(i).getCorreoElectronico().equals(correo)) {
+                return false;
+            }
+        }
         return correo.endsWith("@gmail.com") || new Autenticacion().existeCuentaUPM(correo) || correo.endsWith("@yahoo.com");
     }
 
