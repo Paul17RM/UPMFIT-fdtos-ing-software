@@ -110,8 +110,10 @@ public class ControladorUsuario {
             crearUsuario(datosUsuario);
         } else if (rolUsuario.equals(UPMUsers.PDI) || rolUsuario.equals(UPMUsers.PAS)) {
             datosUsuario.put("antiguedad", VistaUsuario.getInstance().mostrarFormularioPersonal());
+            crearUsuario(datosUsuario);
         } else if (rolUsuario.equals(UPMUsers.ALUMNO)) {
             datosUsuario.put("matricula", VistaUsuario.getInstance().mostrarFormularioAlumno());
+            crearUsuario(datosUsuario);
         }
         VistaSistema.getInstance().resgistroCorrectamente("Usuario");
     }
