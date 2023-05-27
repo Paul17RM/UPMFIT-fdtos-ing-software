@@ -30,8 +30,8 @@ public class ControladorCursoDeportivo {
                 "elJordan@gmail.com", "5Tb&jiji",
                 "86418418F", "ES12 1234 1234 12 12378677890"));
 
-        ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new Cliente("Pablo", "Pablo García Solana",
-                "pablosol@gmail.com", "12efwefasñ3456789KL", "46438429A", 52, 80.5f, "Masculino",
+        ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new Cliente("lilVille", "Pepe Villuela",
+                "villuela47@gmail.com", "12efwefasñ3456789KL", "46438429A", 52, 80.5f, "Masculino",
                 "7777777"));
         ControladorInscripciones.getInstance().inscribirEnCurso(cursoDeportivo, new PersonalUPM("MartaSolas",
                 "Marta Solas Martinez", "martaso.martinez@upm.es", "Admin/12",

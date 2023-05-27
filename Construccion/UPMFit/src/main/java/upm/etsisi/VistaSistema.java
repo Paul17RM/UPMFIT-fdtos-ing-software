@@ -27,7 +27,7 @@ public class VistaSistema {
         System.out.println("####################################################################################");
         System.out.println("#																				   #");
         System.out.println("#                          Muchas gracias por su visita                            #");
-        System.out.println("#                       esperamos verle pronto de nuevo                            #");
+        System.out.println("#                         esperamos verle pronto de nuevo                          #");
         System.out.println("#																				   #");
         System.out.println("####################################################################################");
     }
