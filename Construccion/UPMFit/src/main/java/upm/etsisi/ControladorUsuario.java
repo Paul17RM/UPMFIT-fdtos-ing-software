@@ -139,7 +139,7 @@ public class ControladorUsuario {
     }
 
     private boolean nombreValido(String nombre) {
-        File nameList = new File("Nombres_prohibidos.txt");
+        File nameList = new File("nombres_prohibidos.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(nameList));
